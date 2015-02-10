@@ -1,0 +1,89 @@
+"Window": {
+	font: {
+		fontFamily: "Arial",
+        fontSize: "12dp"
+   },
+   backgroundColor: "#edeae6"
+}
+
+".container": {
+	layout: "vertical"
+}
+
+".header": {
+	width: Ti.UI.FILL,
+	height: "60dp",
+	backgroundColor: "#0A3558",
+	layout: "horizontal"
+}
+
+"#title": {
+	width: "60%",
+	height: Ti.UI.SIZE,
+  	top: "22dp",
+  	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+		fontWeight: "bold",
+		fontSize: "18dp"
+	},
+	color: "#FFF"
+}
+
+"#buttonSolve": {
+	width: "20%",
+	height: "50dp",
+	top: "5dp",
+	bottom: "5dp",
+	color: "#FFF",
+	backgroundColor: "#14609e"
+}
+
+"#buttonHome": {
+	width: "20%",
+	height: "50dp",
+	top: "5dp",
+	bottom: "5dp",
+	color: "#FFF",
+	backgroundColor: "#14609e"
+}
+
+"#gridArea": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	borderWidth: 1,
+	borderColor: "#0A3558",
+	layout: "vertical"
+}
+
+".mainRows": {
+	witdh: Ti.UI.SIZE,
+   	height: Ti.UI.SIZE,
+   	borderWidth: 0,
+    layout: "horizontal"
+}
+
+".subTable": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	borderWidth: 0,
+	layout: "vertical"
+}
+
+".subRows": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	borderWidth: 0,
+	layout: "horizontal"
+}
+
+"TextField": {
+	width: '11.11%',
+	height: 40,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+".empty": {
+	color: "#FFF",
+	backgroundColor: "#0A3558"
+}
+

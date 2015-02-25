@@ -1,9 +1,26 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"#E8EBB2"
 }
 
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
 	color: "#000"
+}
+
+"#buttonStart": {
+	top: 50,
+	backgroundColor: "#01B0F0"
+}
+
+"#buttonReplay": {	
+	backgroundColor: "#84D41D"
+}
+
+"#buttonScore": {	
+	backgroundColor: "#FF5B2B"
+}
+
+"#buttonExit": {
+	backgroundColor: "#FF0000"
 }

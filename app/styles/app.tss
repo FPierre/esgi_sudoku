@@ -3,7 +3,23 @@
 		fontFamily: "Arial",
         fontSize: "12dp"
    },
-   backgroundColor: "#edeae6"
+   backgroundColor: "#E8EBB2"
+}
+
+"#body": {
+	layout: "vertical",
+	width: "40%",
+	height: "90%",
+	backgroundImage: "background.jpg",
+	borderRadius: 10,
+	top: 35
+}
+
+"Button": {
+	height: "40px",
+	width: "200px",
+	bottom: "20px",
+	color: "#FFFFFF"
 }
 
 ".container": {
@@ -13,77 +29,101 @@
 ".header": {
 	width: Ti.UI.FILL,
 	height: "60dp",
-	backgroundColor: "#0A3558",
+	backgroundColor: "#E85350",
 	layout: "horizontal"
 }
 
 "#title": {
-	width: "60%",
+	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
-  	top: "22dp",
   	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
-		fontWeight: "bold",
-		fontSize: "18dp"
+		fontSize: "52dp",
+		fontFamily: "Bonzai"
 	},
 	color: "#FFF"
 }
 
+
 "#buttonSolve": {
-	width: "20%",
-	height: "50dp",
 	top: "5dp",
 	bottom: "5dp",
 	color: "#FFF",
-	backgroundColor: "#14609e"
+	backgroundColor: "#5EB6DD",
+	right: 5
 }
 
 "#buttonHome": {
-	width: "20%",
-	height: "50dp",
 	top: "5dp",
+	left: "5dp",
 	bottom: "5dp",
 	color: "#FFF",
-	backgroundColor: "#14609e"
+	backgroundColor: "#5F8CA3",
+	right: 5
+}
+
+"#buttons": {
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	backgroundColor: "#4E6520",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	layout: "horizontal",
+	top: 60
 }
 
 "#gridArea": {
-	width: Ti.UI.FILL,
+	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	borderWidth: 1,
-	borderColor: "#0A3558",
-	layout: "vertical"
+	layout: "vertical",
+	top: "40dp",
+	borderWidth: 0,
+    borderColor: 'transparent'
 }
 
 ".mainRows": {
 	witdh: Ti.UI.SIZE,
    	height: Ti.UI.SIZE,
-   	borderWidth: 0,
-    layout: "horizontal"
+    layout: "horizontal",
+    borderWidth: 0,
+    borderColor: 'transparent',
+    bottom: 5
 }
 
 ".subTable": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
+	layout: "vertical",
 	borderWidth: 0,
-	layout: "vertical"
+    borderColor: 'transparent'
 }
 
 ".subRows": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
+	layout: "horizontal",
 	borderWidth: 0,
-	layout: "horizontal"
+    borderColor: 'transparent'
 }
 
 "TextField": {
-	width: '11.11%',
+	
+}
+
+".case": {
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	//borderRadius: 5,
+	width: 40,
 	height: 40,
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+	left: 5,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	borderColor: "transparent",
+	borderWidth: 5,
+	backgroundColor: "#8FCF3C"
 }
 
 ".empty": {
 	color: "#FFF",
-	backgroundColor: "#0A3558"
+	backgroundColor: "#375D81",
+	borderColor: "#375D81"
 }
 

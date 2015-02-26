@@ -6,7 +6,7 @@
 		
 		<Label id="bestScore"></Label>
 		
-		<Button id="buttonReplay" onClick="replay">Replay</Button>
+		<Button id="buttonReplay" onClick="replay" enabled="false" touchEnabled="false">Replay</Button>
 		
 		<Button id="buttonStart" onClick="start">Jouer</Button>
 	</Window>

@@ -102,7 +102,7 @@ function Sudoku() {
         for(i = 0; i < 81; i++)
             mask[i] = matrix[i];
 
-        /*for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 3; i++) {
             for (var j = 0; j < 3; j++) {
                 for (var k = 0; k < 5; k++) {
                     var c;
@@ -114,9 +114,11 @@ function Sudoku() {
                     mask[(i * 3 + Math.floor(c / 3)) * 9 + j * 3 + c % 3] = 0;
                 }
             }
-        }*/
+        }
        
-       for (var i = 0; i < 3; i++) {
+       /*
+        * Code à activer pour rendre le Sudoku plus facile à résoudre sans aide
+        *for (var i = 0; i < 3; i++) {
             for (var j = 0; j < 3; j++) {
                 for (var k = 0; k < 1; k++) {
                     var c;
@@ -128,7 +130,7 @@ function Sudoku() {
                     mask[(i * 3 + Math.floor(c / 3)) * 9 + j * 3 + c % 3] = 0;
                 }
             }
-        }
+        }*/
     };
 
     this.getAvailable = function(matrix, cell, avail)
@@ -837,8 +839,8 @@ function Sudoku() {
         return timeDiff.end();
     };
     
-    // TEST pour replay
-    this.getMatrix = function() {
+
+    this.getSolvedMatrix = function() {
     	return this.matrix;
     };
     

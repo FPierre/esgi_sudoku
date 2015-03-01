@@ -1,197 +1,203 @@
 <Alloy>
 	<Window class="container">
-		<View class="header">
-			<Button id="buttonHome" onClick="backHome">Menu</Button>
-			<Label id="title">Sudoku</Label>
-			<Button id="buttonSolve" onClick="solve">Solve</Button>
-		</View>
-
-		<TableView id="gridArea">
-			<TableViewRow class="mainRows">
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_0_0"></TextField>
-						<TextField id="txt_0_1"></TextField>
-						<TextField id="txt_0_2"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_1_0"></TextField>
-						<TextField id="txt_1_1"></TextField>
-						<TextField id="txt_1_2"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_2_0"></TextField>
-						<TextField id="txt_2_1"></TextField>
-						<TextField id="txt_2_2"></TextField>		
-					</TableViewRow>
-				</TableView>
+		<View id="body">
+			<View class="header">
 				
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_0_3"></TextField>
-						<TextField id="txt_0_4"></TextField>
-						<TextField id="txt_0_5"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_1_3"></TextField>
-						<TextField id="txt_1_4"></TextField>
-						<TextField id="txt_1_5"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_2_3"></TextField>
-						<TextField id="txt_2_4"></TextField>
-						<TextField id="txt_2_5"></TextField>		
-					</TableViewRow>
-				</TableView>
+				<Label id="title">Sudoku</Label>
 				
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_0_6"></TextField>
-						<TextField id="txt_0_7"></TextField>
-						<TextField id="txt_0_8"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_1_6"></TextField>
-						<TextField id="txt_1_7"></TextField>
-						<TextField id="txt_1_8"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_2_6"></TextField>
-						<TextField id="txt_2_7"></TextField>
-						<TextField id="txt_2_8"></TextField>		
-					</TableViewRow>
-				</TableView>
-			</TableViewRow>
-
-			<TableViewRow class="mainRows">
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_3_0"></TextField>
-						<TextField id="txt_3_1"></TextField>
-						<TextField id="txt_3_2"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_4_0"></TextField>
-						<TextField id="txt_4_1"></TextField>
-						<TextField id="txt_4_2"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_5_0"></TextField>
-						<TextField id="txt_5_1"></TextField>
-						<TextField id="txt_5_2"></TextField>		
-					</TableViewRow>
-				</TableView>
-				
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_3_3"></TextField>
-						<TextField id="txt_3_4"></TextField>
-						<TextField id="txt_3_5"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_4_3"></TextField>
-						<TextField id="txt_4_4"></TextField>
-						<TextField id="txt_4_5"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_5_3"></TextField>
-						<TextField id="txt_5_4"></TextField>
-						<TextField id="txt_5_5"></TextField>		
-					</TableViewRow>
-				</TableView>
-				
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_3_6"></TextField>
-						<TextField id="txt_3_7"></TextField>
-						<TextField id="txt_3_8"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_4_6"></TextField>
-						<TextField id="txt_4_7"></TextField>
-						<TextField id="txt_4_8"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_5_6"></TextField>
-						<TextField id="txt_5_7"></TextField>
-						<TextField id="txt_5_8"></TextField>		
-					</TableViewRow>
-				</TableView>
-			</TableViewRow>
+			</View>
+			<View backgroundColor="white" id="buttons">
+				<Button id="buttonHome" onClick="backHome">Menu</Button>
+				<Button id="buttonSolve" onClick="solve">Solve</Button>
+			</View>
 			
-			<TableViewRow class="mainRows">
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_6_0"></TextField>
-						<TextField id="txt_6_1"></TextField>
-						<TextField id="txt_6_2"></TextField>		
-					</TableViewRow>
+			<TableView id="gridArea">
+				<TableViewRow class="mainRows">
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_0_0"></TextField>
+							<TextField class="case" id="txt_0_1"></TextField>
+							<TextField class="case" id="txt_0_2"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_1_0"></TextField>
+							<TextField class="case" id="txt_1_1"></TextField>
+							<TextField class="case" id="txt_1_2"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_2_0"></TextField>
+							<TextField class="case" id="txt_2_1"></TextField>
+							<TextField class="case" id="txt_2_2"></TextField>		
+						</TableViewRow>
+					</TableView>
 					
-					<TableViewRow class="subRows">
-						<TextField id="txt_7_0"></TextField>
-						<TextField id="txt_7_1"></TextField>
-						<TextField id="txt_7_2"></TextField>		
-					</TableViewRow>
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_0_3"></TextField>
+							<TextField class="case" id="txt_0_4"></TextField>
+							<TextField class="case" id="txt_0_5"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_1_3"></TextField>
+							<TextField class="case" id="txt_1_4"></TextField>
+							<TextField class="case" id="txt_1_5"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_2_3"></TextField>
+							<TextField class="case" id="txt_2_4"></TextField>
+							<TextField class="case" id="txt_2_5"></TextField>		
+						</TableViewRow>
+					</TableView>
 					
-					<TableViewRow class="subRows">
-						<TextField id="txt_8_0"></TextField>
-						<TextField id="txt_8_1"></TextField>
-						<TextField id="txt_8_2"></TextField>		
-					</TableViewRow>
-				</TableView>
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_0_6"></TextField>
+							<TextField class="case" id="txt_0_7"></TextField>
+							<TextField class="case" id="txt_0_8"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_1_6"></TextField>
+							<TextField class="case" id="txt_1_7"></TextField>
+							<TextField class="case" id="txt_1_8"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_2_6"></TextField>
+							<TextField class="case" id="txt_2_7"></TextField>
+							<TextField class="case" id="txt_2_8"></TextField>		
+						</TableViewRow>
+					</TableView>
+				</TableViewRow>
+	
+				<TableViewRow class="mainRows">
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_3_0"></TextField>
+							<TextField class="case" id="txt_3_1"></TextField>
+							<TextField class="case" id="txt_3_2"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_4_0"></TextField>
+							<TextField class="case" id="txt_4_1"></TextField>
+							<TextField class="case" id="txt_4_2"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_5_0"></TextField>
+							<TextField class="case" id="txt_5_1"></TextField>
+							<TextField class="case" id="txt_5_2"></TextField>		
+						</TableViewRow>
+					</TableView>
+					
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_3_3"></TextField>
+							<TextField class="case" id="txt_3_4"></TextField>
+							<TextField class="case" id="txt_3_5"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_4_3"></TextField>
+							<TextField class="case" id="txt_4_4"></TextField>
+							<TextField class="case" id="txt_4_5"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_5_3"></TextField>
+							<TextField class="case" id="txt_5_4"></TextField>
+							<TextField class="case" id="txt_5_5"></TextField>		
+						</TableViewRow>
+					</TableView>
+					
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_3_6"></TextField>
+							<TextField class="case" id="txt_3_7"></TextField>
+							<TextField class="case" id="txt_3_8"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_4_6"></TextField>
+							<TextField class="case" id="txt_4_7"></TextField>
+							<TextField class="case" id="txt_4_8"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_5_6"></TextField>
+							<TextField class="case" id="txt_5_7"></TextField>
+							<TextField class="case" id="txt_5_8"></TextField>		
+						</TableViewRow>
+					</TableView>
+				</TableViewRow>
 				
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_6_3"></TextField>
-						<TextField id="txt_6_4"></TextField>
-						<TextField id="txt_6_5"></TextField>		
-					</TableViewRow>
+				<TableViewRow class="mainRows">
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_6_0"></TextField>
+							<TextField class="case" id="txt_6_1"></TextField>
+							<TextField class="case" id="txt_6_2"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_7_0"></TextField>
+							<TextField class="case" id="txt_7_1"></TextField>
+							<TextField class="case" id="txt_7_2"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_8_0"></TextField>
+							<TextField class="case" id="txt_8_1"></TextField>
+							<TextField class="case" id="txt_8_2"></TextField>		
+						</TableViewRow>
+					</TableView>
 					
-					<TableViewRow class="subRows">
-						<TextField id="txt_7_3"></TextField>
-						<TextField id="txt_7_4"></TextField>
-						<TextField id="txt_7_5"></TextField>		
-					</TableViewRow>
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_6_3"></TextField>
+							<TextField class="case" id="txt_6_4"></TextField>
+							<TextField class="case" id="txt_6_5"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_7_3"></TextField>
+							<TextField class="case" id="txt_7_4"></TextField>
+							<TextField class="case" id="txt_7_5"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_8_3"></TextField>
+							<TextField class="case" id="txt_8_4"></TextField>
+							<TextField class="case" id="txt_8_5"></TextField>		
+						</TableViewRow>
+					</TableView>
 					
-					<TableViewRow class="subRows">
-						<TextField id="txt_8_3"></TextField>
-						<TextField id="txt_8_4"></TextField>
-						<TextField id="txt_8_5"></TextField>		
-					</TableViewRow>
-				</TableView>
-				
-				<TableView class="subTable">
-					<TableViewRow class="subRows">
-						<TextField id="txt_6_6"></TextField>
-						<TextField id="txt_6_7"></TextField>
-						<TextField id="txt_6_8"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_7_6"></TextField>
-						<TextField id="txt_7_7"></TextField>
-						<TextField id="txt_7_8"></TextField>		
-					</TableViewRow>
-					
-					<TableViewRow class="subRows">
-						<TextField id="txt_8_6"></TextField>
-						<TextField id="txt_8_7"></TextField>
-						<TextField id="txt_8_8"></TextField>		
-					</TableViewRow>
-				</TableView>
-			</TableViewRow>
-		</TableView>
+					<TableView class="subTable">
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_6_6"></TextField>
+							<TextField class="case" id="txt_6_7"></TextField>
+							<TextField class="case" id="txt_6_8"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_7_6"></TextField>
+							<TextField class="case" id="txt_7_7"></TextField>
+							<TextField class="case" id="txt_7_8"></TextField>		
+						</TableViewRow>
+						
+						<TableViewRow class="subRows">
+							<TextField class="case" id="txt_8_6"></TextField>
+							<TextField class="case" id="txt_8_7"></TextField>
+							<TextField class="case" id="txt_8_8"></TextField>		
+						</TableViewRow>
+					</TableView>
+				</TableViewRow>
+			</TableView>
+		</View>
 	</Window>
 </Alloy>

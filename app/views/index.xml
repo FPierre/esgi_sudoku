@@ -1,13 +1,17 @@
 <Alloy>
 	<Window class="container">
-		<View class="header">
-			<Label id="title">Sudoku</Label>
+		<View id="body">
+			<View class="header">
+				<Label id="title">Sudoku</Label>
+			</View>
+			
+			<Label id="bestScore"></Label>
+			
+			<Button id="buttonStart" onClick="start">Jouer</Button>
+			
+			<Button id="buttonReplay" onClick="replay">Replay</Button>
+			
+			<Button id="buttonExit">Quitter</Button>
 		</View>
-		
-		<Label id="bestScore"></Label>
-		
-		<Button id="buttonReplay" onClick="replay" enabled="false" touchEnabled="false">Replay</Button>
-		
-		<Button id="buttonStart" onClick="start">Jouer</Button>
 	</Window>
 </Alloy>

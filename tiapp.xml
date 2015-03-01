@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>com.sudoku_refacto</id>
-    <name>sudoku_refacto</name>
+    <id>com.sudoku</id>
+    <name>sudoku</name>
     <version>1.0</version>
     <publisher>pierre</publisher>
-    <url>http://sudoku_refacto.com</url>
-    <description/>
+    <url>http://sudoku.com</url>
+    <description>undefined</description>
     <copyright>2015 by pierre</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>

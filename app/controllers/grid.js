@@ -5,7 +5,6 @@ var args   = arguments[0] || {};
 // Grille du Sudoku
 var thePuzzle;
 
-// TODO: à virer ?
 // stores the last cell clicked on by the user.
 var selectedCell;
 
@@ -27,7 +26,10 @@ function init() {
         	// Récupération du textfield correspondant à une case
         	var textfield = $['txt_' + i + '_' + j];
 
-			// TODO: à virer ?
+            // if the value is 0, create a blank cell
+            if (thePuzzle.getVal(i, j) == 0) {
+                textfield.value = '';
+            
             textfield.addEventListener('click', selectCell);
 
 			// Pour chaque modification de valeur de la case, vérifie si la grille est finie
@@ -38,24 +40,25 @@ function init() {
 			        var m = Math.floor(val % (60 * 60 * 1000) / (60 * 1000));
 			        var s = Math.floor(val % (60 * 60 * 1000) % (60 * 1000) / 1000);
 			
-					var matrix = thePuzzle.getMatrix();
-			
-					setBestScore(val, matrix);
+					var solvedMatrix = thePuzzle.getSolvedMatrix();
+					var emptySquares = getEmptySquares();
+
+					setBestScore(val, solvedMatrix, emptySquares);
 			
 			        alert('Jeu terminé : ' + h + ' heure, ' + m + ' minutes, ' + s + ' secondes');
 			
 			        backHome();
 			    }
             });
-
-            // if the value is 0, create a blank cell
-            if (thePuzzle.getVal(i, j) == 0) {
-                textfield.value = '';
             }
             else {
                 // if the value is not 0, set the value and mark the cell as a hint.
                 textfield.value = thePuzzle.getVal(i, j);
                 $.addClass(textfield, 'hint');
+
+                textfield.setFocusable(false);
+                textfield.setEditable(false);
+                textfield.setTouchEnabled(false);
             }
         }
     }
@@ -67,18 +70,20 @@ function newGame() {
     unselectCell();
 
     thePuzzle.done = function() {
-        // console.log("done");
+    	var emptySquares = new Array();
+
         // update the board with the new puzzle data.
         for (var i = 0; i < 9; i++) {
             for (var j = 0; j < 9; j++) {
                 var textfield = $['txt_' + i + '_' + j];
                 
                 $.removeClass(textfield, 'error');
-                
+
                 if (thePuzzle.getVal(i, j) == 0) {
                     $.removeClass(textfield, 'hint');
                     $.addClass(textfield, 'empty');
                     textfield.value = '';
+                    emptySquares.push(0);
                 }
                 else {
                     textfield.value = thePuzzle.getVal(i, j);
@@ -86,13 +91,24 @@ function newGame() {
                     textfield.setFocusable(false);
                     textfield.setEditable(false);
                     textfield.setTouchEnabled(false);
+                    emptySquares.push(1);              
                 }
             }
         }
+        
+        setEmptySquares(emptySquares);
     };
 
     // generate the new puzzle.
     thePuzzle.newGame();
+}
+
+function setEmptySquares(array) {
+	Ti.App.Properties.setObject('empty', array);
+}
+
+function getEmptySquares() {
+	return Ti.App.Properties.getObject('empty');
 }
 
 // selects the cell clicked on by the user.
@@ -125,9 +141,6 @@ function selectCell() {
     thePuzzle.setVal(1 * row, 1 * col, val);
     selectedCell.value = (val > 0) ? val : '';
 
-    // check for conflicting values according to the sudoku rules and mark them.
-    // showErrors(1 * row, 1 * col);
-
     // check to see if the game is done.
     if ((val = thePuzzle.gameFinished()) != 0) {
         unselectCell();
@@ -136,9 +149,10 @@ function selectCell() {
         var m = Math.floor(val % (60 * 60 * 1000) / (60 * 1000));
         var s = Math.floor(val % (60 * 60 * 1000) % (60 * 1000) / 1000);
         
-		var matrix = thePuzzle.getMatrix();
+		var solvedMatrix = thePuzzle.getSolvedMatrix();
+		var emptySquares = getEmptySquares();
 
-		setBestScore(val, matrix);
+		setBestScore(val, solvedMatrix, emptySquares);
         
         alert('Jeu terminé : ' + h + ' heure, ' + m + ' minutes, ' + s + ' secondes');
 
@@ -148,7 +162,7 @@ function selectCell() {
 
 // unselects the selected cell. values entered are ignored until a cell is selected again.
 function unselectCell() {
-    if(selectedCell) {
+    if (selectedCell) {
         $.removeClass(selectedCell, 'selected');
     }
     
@@ -160,10 +174,12 @@ function containsClass(el, name) {
     var classes = el.className;
     var arr;
     
-    if(classes)
+    if (classes) {
         arr = classes.split(' ');
-    else
+    }
+    else {
         arr = new Array();
+	}
 
     return contains(arr, name);
 }
@@ -173,65 +189,66 @@ function backHome(e) {
     $.grid.close();
 }
     
-getVal2 = function(test, row, col) {
-  return test[row * 9 + col];
+getVal2 = function(array, row, col) {
+  return array[row * 9 + col];
 };
 
 function solve() {	
-	var test = thePuzzle.save;
+	var array = thePuzzle.save;
 
 	for(var i = 0; i < 9; i++) {
 		for(var j = 0; j < 9; j++) {
 			var textfield = $['txt_' + i + '_' + j];
 
 			if (textfield.value == '') {
-				textfield.value = getVal2(test, i, j);    
-				thePuzzle.setVal(i, j, getVal2(test, i, j));
+				textfield.value = getVal2(array, i, j);    
+				thePuzzle.setVal(i, j, getVal2(array, i, j));
 				textfield.fireEvent('change');
 
 				return;
 			}
-
-			// showErrors(i, j);
 		}
 	}
 }
 
 // Sauvegarde le meilleur score et la grille associée à la partie
-function setBestScore(val, matrix) {
+function setBestScore(val, solvedMatrix, emptySquares) {
 	var bestScore = getBestScore();
 	var score     = bestScore.score;
-	
-	if (bestScore.score != 0 && val < score) {
+
+	if (score == 0 || val < score) {
 		score = val;
 	}
-	
+
 	Ti.App.Properties.setObject('bestScore', {
 		'score': score,
-		'matrix': matrix
+		'solvedMatrix': solvedMatrix,
+		'emptySquares': emptySquares
 	});
 }
 
 // Récupère le meilleur score et la grille associée à la partie
 function getBestScore() {
 	var bestScore = Ti.App.Properties.getObject('bestScore');
-	
-	return (bestScore != undefined) ? bestScore : 0;
+
+	return bestScore;
 }
 
 // Rejoue la meilleure partie
 function replay() {
 	var bestScore = getBestScore();
 
-	console.log(bestScore.matrix);
-
-	if (bestScore == undefined || bestScore.matrix == undefined) {
+	if (bestScore == undefined || bestScore.solvedMatrix == undefined || bestScore.emptySquares == undefined) {
 		return false;
 	}
 
+	$.buttonSolve.hide();
+
 	thePuzzle = new Sudoku();
 
-	thePuzzle.setMatrix(bestScore.matrix);
+	thePuzzle.setMatrix(bestScore.solvedMatrix);
+
+	var number = 0;
 
     // Initialise les cases
     for (var i = 0; i < 9; i++) {
@@ -239,37 +256,30 @@ function replay() {
         	// Récupération du textfield correspondant à une case
         	var textfield = $['txt_' + i + '_' + j];
 
-            // if the value is 0, create a blank cell
-            if (thePuzzle.getVal(i, j) == 0) {
-                textfield.value = '';
-            }
-            else {
-                // if the value is not 0, set the value and mark the cell as a hint.
-                textfield.value = thePuzzle.getVal(i, j);
-                $.addClass(textfield, 'hint');
-            }
-        }
-    }
-
-    // Suite est : newGame();
-
-    // update the board with the new puzzle data.
-    for (var i = 0; i < 9; i++) {
-    	for (var j = 0; j < 9; j++) {
-        	var textfield = $['txt_' + i + '_' + j];
-                
-            if (thePuzzle.getVal(i, j) == 0) {
+            if (bestScore.emptySquares[number] == 0) {
             	$.removeClass(textfield, 'hint');
                 $.addClass(textfield, 'empty');
                 textfield.value = '';
             }
             else {
-            	textfield.value = thePuzzle.getVal(i, j);
+                textfield.value = thePuzzle.getVal(i, j);
                 $.addClass(textfield, 'hint');
             }
+            
+            number++;
         }
+        
+        number++;
     }
 
-    // generate the new puzzle.
-    // thePuzzle.newGame();
+	for (var i = 0; i < 9; i++) {
+    	for (var j = 0; j < 9; j++) {
+    		// Récupération du textfield correspondant à une case
+    		var textfield = $['txt_' + i + '_' + j];
+
+        	if (textfield.value == '') {
+				textfield.value = thePuzzle.getVal(i, j);
+			}
+        }
+    }
 }
